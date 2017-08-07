@@ -1,0 +1,15 @@
+{
+  "presets": [
+    ["es2015", { "modules": false }],
+    "react"
+  ],
+  "plugins": [
+    ["transform-object-rest-spread", { "useBuiltIns": true }],
+    ["transform-runtime"]
+  ],
+  "env": {
+      "test": {
+        "presets": ["es2015", "react"]
+      }
+  } 
+}
