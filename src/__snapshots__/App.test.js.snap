@@ -4,7 +4,9 @@ exports[`App renders correctly 1`] = `
 <div>
   <MyButton
     state={false}
-  />
+  >
+    testChild
+  </MyButton>
   <InputForm
     inputValue={1}
   />

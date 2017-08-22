@@ -6,7 +6,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <MyButton state={false} />
+        <MyButton state={false}>
+          testChild
+        </MyButton>
         <InputForm inputValue={1}/>
        </div>
     );
