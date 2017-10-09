@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import MyButton from './MyButton'
 import InputForm from './InputForm';
+import CollapseDemo from './CollapseDemo';
 
 class App extends Component {
   render() {
@@ -10,6 +11,7 @@ class App extends Component {
           testChild
         </MyButton>
         <InputForm inputValue={1}/>
+        <CollapseDemo />
        </div>
     );
   }
