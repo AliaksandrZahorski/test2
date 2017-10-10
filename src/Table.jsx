@@ -10,25 +10,42 @@ class Table extends Component {
   }
 
   render() {
+    const widthHeader = this.props.header.map((h) => h.width);
+    const sum = widthHeader.reduce((el, prev) => el + prev, 0);
+    console.log(sum);
+    const columnRange = widthHeader.map(w => 100 * w / sum);
+    const percentRange = columnRange.map(el => el+'%').join(' ');
+    const col = css`
+      grid-template-columns: ${percentRange};
+      -ms-grid-columns: ${percentRange};
+    `;
     const header_css = css`
-      display: grid;
+      ${col};
       width: 100%;
-      grid-template-columns: 30% 20%;
-      grid-column-gap: 15px;
+      display: grid;
       font-weight: bold;
+    `;
+    const table_body = css`
+      ${col};
+      width: 100%;
+      display: grid;
+    `;
+    const table_element = css`
+      background-color: lime;
     `;
 
     const locale = {
       one: " заголовок один ",
       two: " заголовок не один ",
+      three: "надпись",
     };
 
     const listHeader = this.props.header.map((h) => <div key={h.name}> {locale[h.name]} </div>);
 
     const listBody = this.props.data.map((row, index) => {
        return (
-         <div key={index}>
-            {this.props.header.map((h) => <span key={h.name}> {row[h.name]} </span>)}
+         <div key={index} className={table_body}>
+            {this.props.header.map((h) => <div key={h.name} className={table_element}> {row[h.name]} </div>)}
          </div>
        );
     });
@@ -38,7 +55,7 @@ class Table extends Component {
         <div className={header_css}>
           {listHeader}
         </div>
-        <div className="table_body">
+        <div>
           {listBody}
         </div>
       </div>

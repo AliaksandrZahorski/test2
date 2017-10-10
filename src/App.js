@@ -9,24 +9,35 @@ class App extends Component {
     const header = [
       {
         name: 'one',
-        width: 1,
+        width: 2,
       },
       {
         name: 'two',
         width: 5,
       },
+      {
+        name: 'three',
+        width: 1,
+      },
     ];
     const data = [
       {
         one: 'column one',
-        two: 1,
+        two: 2,
+        three: 'XX',
       },
       {
         one: 'column two',
         two: 5,
+        three: '--',
+      },
+      {
+        two: 456,
+        three: 'XX',
       },
       {
         one: 'column three',
+        three: 'zzzzzz',
       },
     ];
     return (
