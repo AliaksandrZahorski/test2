@@ -24,6 +24,9 @@ class Table extends Component {
       width: 100%;
       display: grid;
       font-weight: bold;
+      background-color: #76daff;
+      text-align: center;
+      padding: 1em 0;
     `;
     const table_body = css`
       ${col};
@@ -31,7 +34,8 @@ class Table extends Component {
       display: grid;
     `;
     const table_element = css`
-      background-color: lime;
+      background-color: white;
+      padding: 1em 0;
     `;
 
     const locale = {
