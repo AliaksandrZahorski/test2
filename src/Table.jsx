@@ -11,7 +11,10 @@ class Table extends Component {
 
   render() {
     const header_css = css`
-      display: flex;
+      display: grid;
+      width: 100%;
+      grid-template-columns: 30% 20%;
+      grid-column-gap: 15px;
       font-weight: bold;
     `;
 
