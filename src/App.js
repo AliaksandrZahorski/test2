@@ -2,9 +2,33 @@ import React, {Component} from 'react';
 import MyButton from './MyButton'
 import InputForm from './InputForm';
 import CollapseDemo from './CollapseDemo';
+import Table from './Table';
 
 class App extends Component {
   render() {
+    const header = [
+      {
+        name: 'one',
+        width: 1,
+      },
+      {
+        name: 'two',
+        width: 5,
+      },
+    ];
+    const data = [
+      {
+        one: 'column one',
+        two: 1,
+      },
+      {
+        one: 'column two',
+        two: 5,
+      },
+      {
+        one: 'column three',
+      },
+    ];
     return (
       <div>
         <MyButton state={false}>
@@ -12,7 +36,8 @@ class App extends Component {
         </MyButton>
         <InputForm inputValue={1}/>
         <CollapseDemo />
-       </div>
+        <Table header={header} data={data}/>
+      </div>
     );
   }
 }

@@ -9,7 +9,6 @@ class CollapseDemo extends Component {
   };
 
   handleClick = () => {
-    console.log('pressed');
     this.setState(
       prevState => (
         {isOpened: !prevState.isOpened}
@@ -30,7 +29,11 @@ class CollapseDemo extends Component {
             { Age: 23,  Name: 'Lee Salminen' },
             { Age: 28, Position: 'Developer', Name: 'Test' },
           ]} />
-
+          <Table className="table" data={[
+                  { name: 'Row one', content: 'These are regular data rows' },
+                  { name: 'Row two', content: 'They work like above' },
+             ]}
+           />
         </Collapse>
       </div>
   )}
