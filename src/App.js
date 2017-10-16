@@ -23,7 +23,7 @@ class App extends Component {
     const data = [
       {
         one: 'column one',
-        two: 2,
+        two: 6,
         three: 'XX',
       },
       {
