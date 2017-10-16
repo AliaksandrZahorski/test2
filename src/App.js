@@ -40,6 +40,12 @@ class App extends Component {
         three: 'zzzzzz',
       },
     ];
+    const locale = {
+      one: " заголовок один ",
+      two: " заголовок не один ",
+      three: "надпись",
+    };
+
     return (
       <div>
         <MyButton state={false}>
@@ -47,7 +53,7 @@ class App extends Component {
         </MyButton>
         <InputForm inputValue={1}/>
         <CollapseDemo />
-        <Table header={header} data={data}/>
+        <Table header={header} data={data} locale={locale}/>
       </div>
     );
   }

@@ -2,14 +2,23 @@ import React, { Component } from 'react';
 import { css } from 'emotion';
 import  _ from 'lodash';
 
+import TableBody from './TableBody';
+
 class Table extends Component {
+  state = {
+    name: '',
+    rev: false,
+    data: this.props.data,
+  };
 
   render() {
-    const widthHeader = this.props.header.map((h) => h.width);
+    const { header, data, locale } = this.props;
+    
+    const widthHeader = header.map((h) => h.width);
     const sum = widthHeader.reduce((el, prev) => el + prev, 0);
-    console.log(sum);
     const columnRange = widthHeader.map(w => 100 * w / sum);
     const percentRange = columnRange.map(el => el+'%').join(' ');
+
     const col = css`
       grid-template-columns: ${percentRange};
     `;
@@ -21,6 +30,7 @@ class Table extends Component {
       background-color: #76daff;
       text-align: center;
       padding: 1em 0;
+      cursor: pointer;
     `;
     const table_body = css`
       ${col};
@@ -32,38 +42,27 @@ class Table extends Component {
       padding: 1em 0;
     `;
 
-      const locale = {
-      one: " заголовок один ",
-      two: " заголовок не один ",
-      three: "надпись",
-    };
-
-    const column = "two";
-    const rev = false;
-
     const sort = (column, rev) => {
-      return rev ? _.chain(this.props.data).sortBy(column).reverse().value() :      _.chain(this.props.data).sortBy(column).value();
+      return rev ? _.chain(data).sortBy(column).reverse().value() :
+        _.chain(data).sortBy(column).value();
     };
 
-    console.log(sort(column, rev));
-
-    const listHeader = this.props.header.map((h) => {
+    const listHeader = header.map((h) => {
       const onClick = ev => {
         ev.preventDefault();
-        console.log(h.name);
+        this.setState(prevState => ({
+            name: h.name,
+            rev: !prevState.rev,
+          })
+        );
+        this.setState (prevState => ({
+            data: sort(prevState.name, prevState.rev),
+          })
+        );
       };
       return (
         <div key={h.name} onClick={onClick} > {locale[h.name]} </div>
       );
-    });
-
-
-    const listBody = this.props.data.map((row, index) => {
-       return (
-         <div key={index} className={table_body}>
-            {this.props.header.map((h) => <div key={h.name} className={table_element}> {row[h.name]} </div>)}
-         </div>
-       );
     });
 
     return (
@@ -71,9 +70,12 @@ class Table extends Component {
         <div className={header_css}>
           {listHeader}
         </div>
-        <div>
-          {listBody}
-        </div>
+        <TableBody
+          header={header}
+          data={this.state.data}
+          table_body={table_body}
+          table_element={table_element}
+        />
       </div>
     );
   }
