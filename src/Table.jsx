@@ -13,7 +13,7 @@ class Table extends Component {
 
   render() {
     const { header, data, locale } = this.props;
-    
+
     const widthHeader = header.map((h) => h.width);
     const sum = widthHeader.reduce((el, prev) => el + prev, 0);
     const columnRange = widthHeader.map(w => 100 * w / sum);
@@ -26,6 +26,8 @@ class Table extends Component {
       ${col};
       width: 100%;
       display: grid;
+    `;
+    const header_element = css`
       font-weight: bold;
       background-color: #76daff;
       text-align: center;
@@ -61,7 +63,7 @@ class Table extends Component {
         );
       };
       return (
-        <div key={h.name} onClick={onClick} > {locale[h.name]} </div>
+        <div className={header_element} key={h.name} onClick={onClick} > {locale[h.name]} </div>
       );
     });
 
