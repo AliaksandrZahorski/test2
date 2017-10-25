@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { css } from 'emotion';
 import  _ from 'lodash';
+import 'font-awesome/css/font-awesome.min.css';
 
 import TableBody from './TableBody';
 
@@ -63,7 +64,18 @@ class Table extends Component {
         );
       };
       return (
-        <div className={header_element} key={h.name} onClick={onClick} > {locale[h.name]} </div>
+        <div className={header_element} key={h.name} onClick={onClick} >
+          {locale[h.name]}
+          {this.state.name === h.name ?
+            (this.state.rev ?
+              <i className="fa fa-sort-asc"></i>
+              :
+              <i className="fa fa-sort-desc"></i>
+            )
+            :
+            null
+          }
+        </div>
       );
     });
 
