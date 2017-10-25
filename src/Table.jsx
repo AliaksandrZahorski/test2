@@ -89,6 +89,7 @@ class Table extends Component {
           data={this.state.data}
           table_body={table_body}
           table_element={table_element}
+          callback={(i) => console.log('callback =>', i)}
         />
       </div>
     );
